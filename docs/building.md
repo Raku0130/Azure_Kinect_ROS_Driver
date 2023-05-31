@@ -34,6 +34,13 @@ Please note that the Azure Kinect Sensor SDK zip files do not contain the depth 
 
 For more information, please consult the [Azure Kinect Sensor SDK usage guide](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/blob/develop/docs/usage.md).
 
+### Azure Kinect Body Tracking SDK
+Follow the [installation instructions](https://learn.microsoft.com/en-us/azure/kinect-dk/body-sdk-download) in the Azure Kinect Body Tracking SDK repo to install the Body Tracking SDK for your platform.
+
+The Azure Kinect ROS Driver includes CMake files which will try to locate the Azure Kinect Body Tracking SDK. Installing the SDK in a non-default location will result in body tracking being disabled when CMake is unable to locate the SDK.
+
+The Azure Kinect ROS Driver requires version of v1.1.2 of the Azure Kinect Body Tracking SDK to enable body tracking.
+
 ## Compiling
 
 Once the Azure Kinect Sensor SDK has been installed, the ROS node can be built using `catkin_make`. Please note that you may need to run `catkin_make --force-cmake` to update the SDK binaries which are copied into the ROS output folders.
