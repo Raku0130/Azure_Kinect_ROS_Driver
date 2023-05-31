@@ -17,7 +17,7 @@ Follow the [installation instructions](https://github.com/microsoft/Azure-Kinect
 
 The Azure Kinect ROS Driver includes CMake files which will try to locate the Azure Kinect Sensor SDK. Installing the SDK in a non-default location will result in compile failures when CMake is unable to locate the SDK.
 
-The Azure Kinect ROS Driver requires version of v1.4.0 of the Azure Kinect Sensor SDK to compile.
+The Azure Kinect ROS Driver requires version of v1.4.1 of the Azure Kinect Sensor SDK to compile.
 
 #### Alternate SDK Installation
 
@@ -36,6 +36,21 @@ For more information, please consult the [Azure Kinect Sensor SDK usage guide](h
 
 ### Azure Kinect Body Tracking SDK
 Follow the [installation instructions](https://learn.microsoft.com/en-us/azure/kinect-dk/body-sdk-download) in the Azure Kinect Body Tracking SDK repo to install the Body Tracking SDK for your platform.
+
+Azure Kinect Sensor SDK1.1.2 has an error in the config file that must be corrected.
+```bash
+$ cat /usr/lib/cmake/k4abt/k4abtConfig.cmake
+include(CMakeFindDependencyMacro)
+
+find_dependency(k4a 1.4 REQUIRED)
+
+# Add the targets file
+include("${CMAKE_CURRENT_LIST_DIR}/k4abtTargets.cmake")
+```
+Modify this file to add the 3 version number component
+```
+find_dependency(k4a 1.4.1 REQUIRED)
+```
 
 The Azure Kinect ROS Driver includes CMake files which will try to locate the Azure Kinect Body Tracking SDK. Installing the SDK in a non-default location will result in body tracking being disabled when CMake is unable to locate the SDK.
 
